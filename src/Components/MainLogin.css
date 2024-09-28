@@ -1,0 +1,40 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+.main-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.main-login-title {
+  color: #007bff;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.main-login-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.role-button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.role-button:hover {
+  background-color: #0056b3;
+}

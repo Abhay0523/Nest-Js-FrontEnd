@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './EmployyLoginPage.css';
 
 const EmployeeLoginPage = () => {
   const [empCode, setEmpCode] = useState('');
   const [dob, setDob] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      alert('A user is already logged in. Please log out first.');
+      navigate('/employee-dashboard');
+    }
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('http://localhost:3000/employees/employee-login', {
+      const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,11 +28,14 @@ const EmployeeLoginPage = () => {
       });
 
       if (response.ok) {
-        const employee = await response.json(); // Retrieve the full employee object
-        console.log('Login successful:', employee);
-        navigate('/employee-dashboard', { state: { employee:employee } });  // Pass entire employee object to the dashboard
-      } else {
+        const { token, employee } = await response.json();
+        localStorage.setItem('token', token);
+        localStorage.setItem('employee', JSON.stringify(employee));
+        navigate('/employee-dashboard');
+      } else if (response.status === 401) {
         alert('Invalid credentials');
+      } else {
+        alert('Login failed');
       }
     } catch (error) {
       console.error('Error during login:', error);
@@ -32,34 +44,40 @@ const EmployeeLoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Employee Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
+    <div className="login-container">
+      <h2 className="login-title">Employee Login</h2>
+      <form className="login-form" onSubmit={handleLogin}>
+        <div className="form-group">
           <label>Employee Code:</label>
           <input
             type="text"
+            className="login-input"
             value={empCode}
             onChange={(e) => setEmpCode(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Date of Birth (YYYY-MM-DD):</label>
           <input
             type="text"
+            className="login-input"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Log in</button>
+        <button type="submit" className="login-button">Log in</button>
       </form>
 
       <p>Don't have an account?</p>
-      <button onClick={() => navigate('/user-creation-EMP')}>Create Employee</button>
+      
+      <button className="create-account-button" onClick={() => navigate('/user-creation-EMP')}>Create Account</button>
+      <button className="login-button" onClick={() => navigate('/')}>Back</button>
+     
     </div>
   );
 };
 
 export default EmployeeLoginPage;
+  

@@ -1,0 +1,185 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.dashboard-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 150px;
+    transition: background-color 0.3s;
+}
+
+.dashboard-button:hover {
+    background-color: #0056b3;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.dashboard-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 150px;
+    transition: background-color 0.3s;
+}
+
+.dashboard-button:hover {
+    background-color: #0056b3;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Existing CSS for dashboard remains unchanged */
+
+/* Scoped CSS for the new employee details section */
+.employee-details-section .employee-details-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .employee-details-section .employee-details-table th,
+  .employee-details-section .employee-details-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .employee-details-section .employee-details-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .employee-details-section .employee-details-table td {
+    color: #555;
+  }
+  
+  .employee-details-section .employee-details-table tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  .employee-details-section .employee-details-table tr:hover {
+    background-color: #ddd;
+  }
+
+/* Basic View Details Button */
+.view-details-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .view-details-button:hover {
+    background-color: #0056b3;   }
+  
+  .view-details-button:active {
+    background-color: #004080;
+  }
+  
+  .view-details-button:focus {
+    outline: none; 
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); 
+  }
+  
+  .error{
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+
+  
+  

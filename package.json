@@ -11,7 +11,12 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "framer-motion": "^11.5.6",
+    "highcharts": "^11.4.8",
+    "highcharts-react-official": "^3.2.1",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"
   },

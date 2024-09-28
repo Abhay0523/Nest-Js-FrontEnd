@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import './AttendanceCheck.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 function AttendanceCheck() {
   const [punches, setPunches] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPunches = async () => {
@@ -9,7 +12,7 @@ function AttendanceCheck() {
       const data = await response.json();
       setPunches(data);
     };
-    fetchPunches(); 
+    fetchPunches();
   }, []);
 
   const formatTime = (dateStr) => {
@@ -26,9 +29,12 @@ function AttendanceCheck() {
   };
 
   return (
-    <div>
-      <h1>Attendance Check</h1>
-      <table>
+  <>
+    <div className="attendance-container">
+      <h1 className="attendance-title">Attendance Check</h1>
+
+     
+      <table className="attendance-table">
         <thead>
           <tr>
             <th>Employee Code</th>
@@ -46,10 +52,19 @@ function AttendanceCheck() {
               <td>{formatTime(punch.punch_out_time)}</td>
             </tr>
           ))}
+
+          
         </tbody>
       </table>
+
+          
     </div>
-  );
+    <button className="back-button" onClick={() => navigate('/admin-dashboard')}>
+        Back 
+      </button>
+    </>
+      
+);
 }
 
 export default AttendanceCheck;

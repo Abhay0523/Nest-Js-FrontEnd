@@ -1,66 +1,84 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './EmployeeDashboard.css';
 
 const EmployeeDashboard = () => {
-  const location = useLocation();
-  const employee = location.state?.employee;  
   const navigate = useNavigate();
-  console.log('Employee Data:', employee);
-  console.log(employee.employee.emp_code);  
+  const [employee, setEmployee] = useState(null);
+  const [isPunch, setIsPunch] = useState(false);
+  
 
-  const [punchStatus, setPunchStatus] = useState(null);
-  const [isPunchedIn, setIsPunchedIn] = useState(false); 
-
-  const today = new Date();
-  const formattedDate = today.toISOString().split('T')[0];
-
-  if (!employee) {
-    return <p>No employee data found. Please log in again.</p>;
-  }
-
-  const emp_code = employee.employee.emp_code; 
+  useEffect(() => {
+    const storedEmployee = JSON.parse(localStorage.getItem('employee'));
+    const token = localStorage.getItem('token');
+    
+    if (!storedEmployee || !token) {
+      alert("No Token is created for the user");
+      navigate('/');
+    } else {
+      setEmployee(storedEmployee);
+      
+      
+      const punchStatus = localStorage.getItem('isPunch') === 'true'; 
+      setIsPunch(punchStatus);
+    }
+  }, []);
 
   const handlePunch = async (type) => {
+    const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:3000/punch/${type}/${emp_code}`, {
+      const response = await fetch(`http://localhost:3000/punch/${type}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        },
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (response.ok) {
         const data = await response.json();
-        setPunchStatus(`Punch ${type} successful`);
-
-       
+        console.log(data);
+        
+      
         if (type === 'in') {
-          setIsPunchedIn(true); 
-        } else {
-          setIsPunchedIn(false); 
+          setIsPunch(true);
+          localStorage.setItem('isPunch', 'true'); 
+        } else if (type === 'out') {
+          setIsPunch(false);
+          localStorage.setItem('isPunch', 'false'); 
         }
-      } else {
-        alert('Punch failed');
       }
     } catch (error) {
-      console.error('Error during punch:', error);
-      alert('Punch failed');
+      console.error("Error occurred:", error);
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('employee');
+    localStorage.removeItem('isPunch'); 
+    navigate('/');
+  };
+
+  if (!employee) {
+    return <div>Loading...</div>; 
+  }
   return (
-    <div>
-      <h2>Welcome, {employee.employee.name}</h2> 
-      <p>Employee Code: {emp_code}</p>
-      <p>Today Date: {formattedDate}</p>
+    <div className="dashboard-container">
+      <h2 className="dashboard-title">Welcome, {employee.name}</h2>
       
-      <button onClick={() => handlePunch('in')} disabled={isPunchedIn}>Punch In</button>
-      <button onClick={() => handlePunch('out')} disabled={!isPunchedIn}>Punch Out</button>
+      <button className="dashboard-button" onClick={() => handlePunch('in')} disabled={isPunch}>
+        Punch In
+      </button>
+      <button className="dashboard-button" onClick={() => handlePunch('out')} disabled={!isPunch}>
+        Punch Out
+      </button>
+      
+    
 
-      {punchStatus && <p>{punchStatus}</p>}
-
-  
-      <button onClick={() => navigate("/employee-login")}>Log Out</button>
+      <button className="logout-button" onClick={handleLogout}>
+        Log Out
+      </button>
     </div>
   );
 };

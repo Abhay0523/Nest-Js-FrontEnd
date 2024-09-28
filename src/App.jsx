@@ -5,11 +5,12 @@ import AdminDashboard from './Components/Admin/AdminDashBoard';
 import UserCreation from './Components/Admin/UserCreation';
 import AttendanceCheck from './Components/Admin/AttendanceCheck';
 import EmployeesData from './Components/Admin/EmployeeData';
-// import EditEmployee from './Components/Admin/EditEmployee';
+import EmployeeDashboard from './Components/EmployeeDashboard';
 import UserCreationJSX from './Components/UserCreationEmp';
 import EmployeeLoginPage from './Components/EmployeeLoginPage'; 
 import MainLogin from './Components/MainLogin';
-import EmployeeDashboard from './Components/EmployeeDashboard';
+import EditEmployee from './Components/Admin/EditEmployee';
+
 function App() {
   return (
     <Router>
@@ -20,11 +21,10 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/user-creation" element={<UserCreation />} />
         <Route path="/user-creation-EMP" element={<UserCreationJSX />} />
-
+        <Route path="/edit-employee/:emp_code" element={<EditEmployee />} /> 
+        <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
         <Route path="/attendance" element={<AttendanceCheck />} />
         <Route path="/employees-data" element={<EmployeesData />} />
-        <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-        {/* <Route path="/edit-employee/:id" element={<EditEmployee />} /> */}
       </Routes>
     </Router>
   );

@@ -1,0 +1,68 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+}
+
+.employees-data-container {
+    max-width: 1042px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.employees-data-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.employees-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employees-data-table th,
+.employees-data-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.employees-data-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.employees-data-table td {
+    background-color: #f9f9f9;
+}
+
+.employees-data-table tr:nth-child(even) td {
+    background-color: #e9e9e9;
+}
+
+.employees-data-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.back-button{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 300px;
+}
+.edit-button{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none; text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}

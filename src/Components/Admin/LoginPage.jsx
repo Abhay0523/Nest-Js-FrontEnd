@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LoginPage.css'; // Import the CSS file for styling
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -8,7 +9,6 @@ function LoginPage() {
 
   const handleLogin = () => {
     if (username === 'admin' && password === 'admin123') {
-    //   onLogin('admin');
       navigate('/admin-dashboard');
     } else {
       alert('Invalid credentials');
@@ -16,23 +16,26 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input 
-        type="text" 
-        placeholder="Username" 
-        value={username} 
-        onChange={(e) => setUsername(e.target.value)} 
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-      />
-      <button onClick={handleLogin}>Login</button>
-
-    
+    <div className="login-container">
+      <h1 className="login-title">Login</h1>
+      <div className="login-form">
+        <input 
+          type="text" 
+          placeholder="Username" 
+          value={username} 
+          onChange={(e) => setUsername(e.target.value)} 
+          className="login-input"
+        />
+        <input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          className="login-input"
+        />
+        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className='login-button' onClick={()=> navigate('/')}>Back</button>
+      </div>
     </div>
   );
 }
