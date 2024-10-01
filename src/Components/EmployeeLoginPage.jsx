@@ -60,7 +60,7 @@ const EmployeeLoginPage = () => {
         <div className="form-group">
           <label>Date of Birth (YYYY-MM-DD):</label>
           <input
-            type="text"
+            type="date"
             className="login-input"
             value={dob}
             onChange={(e) => setDob(e.target.value)}

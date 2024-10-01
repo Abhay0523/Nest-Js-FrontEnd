@@ -10,6 +10,7 @@ import UserCreationJSX from './Components/UserCreationEmp';
 import EmployeeLoginPage from './Components/EmployeeLoginPage'; 
 import MainLogin from './Components/MainLogin';
 import EditEmployee from './Components/Admin/EditEmployee';
+import NavigateAttendance from './Components/Navigate-Attendance';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
         <Route path="/attendance" element={<AttendanceCheck />} />
         <Route path="/employees-data" element={<EmployeesData />} />
+        <Route path="navigate-attendance" element={<NavigateAttendance/>}/>
       </Routes>
     </Router>
   );

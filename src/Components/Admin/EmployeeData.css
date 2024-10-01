@@ -65,4 +65,5 @@ body {
     border: none; text-align: center;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }

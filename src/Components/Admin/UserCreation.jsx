@@ -19,6 +19,8 @@ function UserCreation() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+    const dates= new Date();
+    console.log(dates)
     let formValid = true;
     const newErrors = {};
 
@@ -151,6 +153,7 @@ function UserCreation() {
             type="text"
             placeholder="Mobile Number"
             value={mobile}
+            maxLength={10}
             onChange={(e) => setMobile(e.target.value)}
           />
           {errors.mobile && <span className="error">{errors.mobile}</span>}

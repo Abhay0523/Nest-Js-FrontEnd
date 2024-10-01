@@ -73,7 +73,9 @@ const EmployeeDashboard = () => {
       <button className="dashboard-button" onClick={() => handlePunch('out')} disabled={!isPunch}>
         Punch Out
       </button>
-      
+      <button className='dashboard-button' onClick={()=>{navigate('/navigate-attendance')}}>
+        View Attendance
+      </button>
     
 
       <button className="logout-button" onClick={handleLogout}>
